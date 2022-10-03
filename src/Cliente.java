@@ -1,10 +1,12 @@
 import java.math.BigInteger;
 import java.util.*;
+import javax.swing.*;
 import javax.swing.JOptionPane;
 
 
 public class Cliente {
 
+    //Definimos los atributos de la clase cliente
     private String key;
     private String codigoCliente;
     private String razonSocial;
@@ -15,14 +17,12 @@ public class Cliente {
     private int cuitPrefijo;
     private int cuitMedio;
     private int cuitSufijo;
-    private int añoContrato;
-    private int diaContrato;
-    private int mesContrato;
 
 
     //Method constructor
     public Cliente() {
 
+        //Inicializamos las variables del metodo constructor
         this.key = generarKey();
         this.codigoCliente = "";
         this.razonSocial = "";
@@ -31,51 +31,34 @@ public class Cliente {
         this.cuitPrefijo = 0;
         this.cuitMedio = 0;
         this.cuitSufijo = 0;
-        this.añoContrato = 0;
-        this.mesContrato = 0;
-        this.diaContrato = 0;
+
     }
 
     //===============================METODOS===================================
+
 
     //Metodo para agregar una nueva instancia de la clase Cliente.
     public static void agregarCliente(){
 
         // creamos el objeto cliente.
         Cliente cliente = new Cliente();
-        Scanner input = new Scanner(System.in);
 
-        System.out.println("Ingrese el codigo del Cliente");
-        String codigo_Cliente = input.next();
+        // Tomamos los valores ingresados por el usuario con JOptionPane y el metodo showInputDialog.
+        String codigo_Cliente = JOptionPane.showInputDialog("Ingrese el codigo del Cliente: ");
 
-        System.out.println("Ingrese el nombre completo");
-        String nombre_Fantasia = input.next();
+        String nombre_Fantasia = JOptionPane.showInputDialog("Ingrese el Nombre completo: ");
 
-        System.out.println("Ingrese la razon social");
-        String razon_social = input.next();
+        String razon_social = JOptionPane.showInputDialog("Ingrese la Razon social: ");
 
-        System.out.println("Ingrese el email");
-        String _email = input.next();
+        String _email = JOptionPane.showInputDialog("Ingrese el correo electronico: ");
 
-        System.out.println("Ingrese el prefijo del Cuit");
-        int cuit_Prefijo = Integer.parseInt(input.next());
+        int cuit_Prefijo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el prefijo del Cuit: "));
 
-        System.out.println("Ingrese la parte media del Cuit");
-        int cuit_Medio = Integer.parseInt(input.next());
+        int cuit_Medio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el termino medio del Cuit: "));
 
-        System.out.println("Ingrese el sufijo del Cuit");
-        int cuit_Sufijo = Integer.parseInt(input.next());
+        int cuit_Sufijo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el sufijo del Cuit: "));
 
-        // REVISAR: REEMPLAZAR PARA QUE SEA AUTOMATICO.
-        System.out.println("Ingrese el año de inicio de contrato");
-        int anio_Contrato = Integer.parseInt(input.next());
-
-        System.out.println("Ingrese el mes de inicio del contrato");
-        int mes_Contrato = Integer.parseInt(input.next());
-
-        System.out.println("Ingrese el dia de inicio del contrato");
-        int dia_Contrato = Integer.parseInt(input.next());
-
+        // Con los metodos set, establecemos los valores de los atributos luego de que el usuario ingresa los datos.
         cliente.setCodigoCliente(codigo_Cliente);
         cliente.setNombreFantasia(nombre_Fantasia);
         cliente.setEmail(_email);
@@ -83,12 +66,12 @@ public class Cliente {
         cliente.setCuitPrefijo(cuit_Prefijo);
         cliente.setCuitMedio(cuit_Medio);
         cliente.setCuitSufijo(cuit_Sufijo);
-        cliente.setAñoContrato(anio_Contrato);
-        cliente.setMesContrato(mes_Contrato);
-        cliente.setDiaContrato(dia_Contrato);
 
         // Añadimos al nuevo cliente a la array de listaDeClientes.
         listaDeClientes.add(cliente);
+
+        //Mostramos un mensaje al usuario.
+        JOptionPane.showMessageDialog(null,"El Cliente ha sido agregado exitosamente!");
 
     }
 
@@ -100,23 +83,76 @@ public class Cliente {
     }
 
     //Mostramos una lista de cliente con sus datos.
-    public static void mostrarCliente(/*String CodigoCliente, String Nombre, String email, String razonSocial, int cuitPrefijo, int cuitMedio, int cuitSufijo, int anioContrato, int mesContrato, int diaContrato*/){
+    public static void mostrarCliente(){
     System.out.println("Lista de clientes: ");
     // EN caso de que no se hayan agregado clientes, este condicional mostrara un mensaje al usuario.
         if(listaDeClientes.size() == 0){
             System.out.println("No hay clientes agregados actualmente");
         }
 
+        // Con un ciclo for recorremos el arraylist listaDeClientes y mostramos los datos de cada cliente agregado.
         for(int i = 0;i< listaDeClientes.size();i++){
-            //listaAuxiliar.add(listaDeClientes.get(i));
-
-
-            System.out.println("Cliente numero: " + i + "\n1Name: " + listaDeClientes.get(i).obtenerNombre() + "\n" + "Email: " + listaDeClientes.get(i).obtenerEmail());
+            System.out.println("================================");
+            System.out.println("Cliente numero: " + i + "\nNombre: " + listaDeClientes.get(i).obtenerNombre() + "\n" + "Email: " + listaDeClientes.get(i).obtenerEmail());
         }
 
-
-
     }
+
+    //DESPLEGAMOS MENU DE OPCIONES EN CLIENTE
+
+    public static void opcionesCliente(){
+
+        //Con la clase escanner recibimos lo que el usuario escribe por teclado en sn.
+        Scanner sn = new Scanner(System.in);
+        boolean salir = false;
+        int opcion; //Guardaremos la opcion del usuario
+
+        while (!salir)
+        {
+
+            System.out.println("====================================");
+            System.out.println("MENU DE OPCIONES DE CLIENTE");
+            System.out.println("");
+            System.out.println("1. Crear nuevo Cliente");
+            System.out.println("2. Mostrar Clientes");
+            System.out.println("3. Modificar clientes"); // pronto sera agregado
+            System.out.println("4. Eliminar cliente"); // pronto sera agregado
+            System.out.println("5. Salir");
+            System.out.println("");
+            System.out.println("====================================");
+
+            try {
+
+                System.out.println("Escribe una de las opciones: \n");
+                opcion = sn.nextInt();
+
+                switch (opcion) {
+                    case 1:
+                        Cliente.agregarCliente();
+                        break;
+                    case 2:
+                        Cliente.mostrarCliente();
+                        break;
+                    case 3:
+                        //agregar metodo modificar cliente.
+                        break;
+                    case 4:
+                        //agregar metodo eliminar cliente.
+                        break;
+                    case 5:
+                        salir = true;
+                        break;
+                    default:
+                        System.out.println("Solo números entre 1 y 4");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Debes insertar un número");
+                sn.next();
+            }
+        }
+    }
+
+
     //Metodos settler:
 
 
@@ -150,18 +186,6 @@ public class Cliente {
 
     public void setCuitSufijo(int CuitSufijo){
         this.cuitSufijo = CuitSufijo;
-    }
-
-    public void setAñoContrato(int AñoContrato) {
-        this.añoContrato = añoContrato;
-    }
-
-    public void setMesContrato(int MesContrato){
-        this.mesContrato = MesContrato;
-    }
-
-    public void setDiaContrato(int DiaContrato ){
-        this.diaContrato = DiaContrato;
     }
 
     //Metodos getter:

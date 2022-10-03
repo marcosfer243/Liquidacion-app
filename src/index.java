@@ -11,25 +11,33 @@ public class index {
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
 
+        JOptionPane.showMessageDialog(null,"Bienvenido al TP2 de Programacion orientada a objetos con Java");
+        JOptionPane.showMessageDialog(null,"Mi nombre es Marcos Fernandez");
+
         while (!salir)
         {
-
-            System.out.println("1. Crear nuevo Cliente");
-            System.out.println("2. Mostrar clientes");
-            System.out.println("3. Consultar Liquidaciones");
+            System.out.println("====================================");
+            System.out.println("MENU DE OPCIONES");
+            System.out.println("");
+            System.out.println("1. Clientes");
+            System.out.println("2. Liquidaciones");
+            System.out.println("3. Vencimientos"); // pronto sera agregado
             System.out.println("4. Salir");
+            System.out.println("");
+            System.out.println("====================================");
+
 
             try {
 
-                System.out.println("Escribe una de las opciones");
+                System.out.print("Escribe una de las opciones: ");
                 opcion = sn.nextInt();
 
                 switch (opcion) {
                     case 1:
-                        Cliente.agregarCliente();
+                        Cliente.opcionesCliente();
                         break;
                     case 2:
-                        Cliente.mostrarCliente();
+                        Liquidacion.opcionesLiquidacion();
                         break;
                     case 3:
                         System.out.println("Has seleccionado la opcion 3");
