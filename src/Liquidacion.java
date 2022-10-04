@@ -64,7 +64,7 @@ public class Liquidacion {
 
     }
 
-    //===================METODOS==================================================
+    //===================METODOS===========================
 
     //Metodo para generar una key.
     public static String generarKey(){
@@ -84,7 +84,7 @@ public class Liquidacion {
         // Con un ciclo for recorremos el arraylist listaDeLiquidaciones y mostramos los datos de cada liquidacion agregada.
         for(int i = 0;i< listaDeLiquidaciones.size();i++){
             System.out.println("================================");
-            System.out.println("Liquidacion numero: " + (i + 1) + "\nNombre: " + listaDeLiquidaciones.get(i).getNombreLiquidacion() + "\n" + "Monto: " + listaDeLiquidaciones.get(i).getMonto());
+            System.out.println("Liquidacion numero: " + (i + 1) + "\nNombre: " + listaDeLiquidaciones.get(i).getNombreLiquidacion() + "\n" + "Monto: $" + listaDeLiquidaciones.get(i).getMonto()+"\n"+"Fecha de alta: " + listaDeLiquidaciones.get(i).getDiaDeAltaLiquidacion()+"/"+listaDeLiquidaciones.get(i).getMesDeAltaLiquidacion()+"/"+listaDeLiquidaciones.get(i).getAñoDeAltaLiquidacion());
         }
 
     }

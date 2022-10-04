@@ -40,7 +40,7 @@ public class index {
                         Liquidacion.opcionesLiquidacion();
                         break;
                     case 3:
-                        System.out.println("Has seleccionado la opcion 3");
+                        Vencimientos.opcionesVencimientos();
                         break;
                     case 4:
                         salir = true;

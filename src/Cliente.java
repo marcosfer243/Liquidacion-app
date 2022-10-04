@@ -93,7 +93,7 @@ public class Cliente {
         // Con un ciclo for recorremos el arraylist listaDeClientes y mostramos los datos de cada cliente agregado.
         for(int i = 0;i< listaDeClientes.size();i++){
             System.out.println("================================");
-            System.out.println("Cliente numero: " + i + "\nNombre: " + listaDeClientes.get(i).obtenerNombre() + "\n" + "Email: " + listaDeClientes.get(i).obtenerEmail());
+            System.out.println("Cliente numero: " + i + "\nNombre: " + listaDeClientes.get(i).obtenerNombre() + "\n" + "Email: " + listaDeClientes.get(i).obtenerEmail() + "\n" + "Razon social: " + listaDeClientes.get(i).obtenerRazonSocial() + "\n" + "CUIT: " + listaDeClientes.get(i).obtenerCuitPrefijo()+"-"+listaDeClientes.get(i).obtenerCuitMedio()+"-"+listaDeClientes.get(i).obtenerCuitSufijo());
         }
 
     }
